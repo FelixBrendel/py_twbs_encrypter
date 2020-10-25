@@ -1,0 +1,145 @@
+ 
+summary > p {
+    display: inline;
+}
+
+body {
+    display: flex;
+}
+
+.side-links {
+    position: fixed;
+    top: 100px;
+}
+
+.side-links > li {
+    list-style: none;
+}
+
+.img-responsive {
+    margin: auto;
+}
+
+.logo {
+  position: fixed;
+  padding: 10px;
+  width: 300px;
+}
+
+.side-links > li > a {
+    font-weight: 500;
+    color: #999;
+    display: block;
+    padding: 4px 20px;
+    font-size: 14px;
+    position: relative;
+}
+
+.side-links > li > a:hover {
+    padding-left: 19px;
+    color: #A1283B;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #A1283B;
+}
+
+.side-links > li > a.active {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #A1283B;
+    background-color: transparent;
+    border-left: 2px solid #A1283B;
+}
+
+.side-bar {
+    max-width: 300px;
+    min-width: 300px;
+}
+
+@media (max-width:991px){
+    .side-bar {
+        display: none;
+    }
+}
+
+
+.org-keyword {
+  /* font-lock-keyword-face */
+  color: #859900;
+  font-weight: bold;
+}
+.org-type {
+  /* font-lock-type-face */
+  color: #b58900;
+  font-style: italic;
+}
+.org-rainbow-delimiters-base {
+}
+.org-rainbow-delimiters-base-error {
+  /* rainbow-delimiters-base-error-face */
+  color: #88090B;
+}
+.org-rainbow-delimiters-depth-1 {
+  /* rainbow-delimiters-depth-1-face */
+  color: #268bd2;
+}
+.org-rainbow-delimiters-depth-2 {
+  /* rainbow-delimiters-depth-2-face */
+  color: #d33682;
+}
+.org-rainbow-delimiters-depth-3 {
+  /* rainbow-delimiters-depth-3-face */
+  color: #859900;
+}
+.org-rainbow-delimiters-depth-4 {
+  /* rainbow-delimiters-depth-4-face */
+  color: #cb4b16;
+}
+.org-rainbow-delimiters-depth-5 {
+  color: #6c71c4;
+}
+.org-rainbow-delimiters-depth-6 {
+  color: #b58900;
+}
+.org-rainbow-delimiters-depth-7 {
+  color: #35a69c;
+}
+.org-rainbow-delimiters-depth-8 {
+  color: #80a880;
+}
+.org-rainbow-delimiters-depth-9 {
+  color: #887070;
+}
+.org-rainbow-delimiters-mismatched {
+  color: #dc322f;
+  font-weight: bold;
+}
+.org-rainbow-delimiters-unmatched {
+  color: #dc322f;
+  font-weight: bold;
+}
+.org-variable-name {
+  color: #268bd2;
+}
+.org-comment {
+  color: #96A7A9;
+  font-style: italic;
+}
+.org-comment-delimiter {
+  color: #96A7A9;
+  font-style: italic;
+}
+.org-highlight-numbers-number {
+  color: #6c71c4;
+  font-weight: bold;
+}
+.org-string {
+  color: #2aa198;
+}
+.org-function-name {
+  color: #b58900;
+}
+.org-preprocessor {
+  color: #81A1C1;
+  font-weight: bold;
+}
