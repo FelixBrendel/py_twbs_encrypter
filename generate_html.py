@@ -1,3 +1,4 @@
+import shutil
 import os
 import random
 import string
@@ -26,11 +27,11 @@ org_files = []
 keys = []
 titles = []
 
-for filename in sorted(os.listdir(os.path.join(".", "org"))):
+for filename in sorted(os.listdir(org_dir)):
     if filename.endswith(".org"):
         org_files.append(filename[:-4])
 
-        with open(os.path.join(".", "org", filename), "r") as org_file:
+        with open(os.path.join(org_dir, filename), "r") as org_file:
             text = org_file.read()
             match = re.search(r"#\+title: (.*)", text, re.IGNORECASE)
             if match:
@@ -47,17 +48,18 @@ for filename in sorted(os.listdir(os.path.join(".", "org"))):
 
 export_command = """
   (save-window-excursion
-    (find-file "org/{}.org")
+    (find-file "{}")
     (setq org-twbs-htmlize-output-type 'css)
     (org-twbs-export-to-html))""".replace("\n", " ")
 
 
 for org_file, org_key in zip(org_files, keys):
-    r = subprocess.call(['emacsclient', "-e", f'{export_command.format(org_file)}'])
+    full_path = os.path.join(org_dir, org_file + ".org")
+    r = subprocess.call(['emacsclient', "-e", f'{export_command.format(full_path)}'])
     if r != 0:
         break
 
-    generated_file = os.path.join(".", "org", org_file + ".html")
+    generated_file = os.path.join(org_dir, org_file + ".html")
 
     with open(generated_file, "r") as html:
         text = html.read()
@@ -125,5 +127,8 @@ for org_file, org_key in zip(org_files, keys):
 
     # delete old file
     os.remove(generated_file)
+# copy other needed files
+shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "decipher.js"), os.path.join(output_dir, "decipher.js"))
+shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles.css"),   os.path.join(output_dir, "styles.css"))
 
 print("done")
