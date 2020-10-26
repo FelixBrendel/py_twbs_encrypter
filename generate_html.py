@@ -73,7 +73,7 @@ for org_file, org_key in zip(org_files, keys):
                        <body>
                          <div class="side-bar">
                            <a href="index.html">
-                             <img class="logo" src="./images/raycourselogo.png"/>
+                             <img class="logo" src="./images/logo.png"/>
                            </a>
                            <ul class="side-links">
         """
