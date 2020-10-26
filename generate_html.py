@@ -72,7 +72,7 @@ for org_file, org_key in zip(org_files, keys):
         sidebar_html = """
                        <body>
                          <div class="side-bar">
-                           <a href="index.html">
+                           <a href="/">
                              <img class="logo" src="./images/logo.png"/>
                            </a>
                            <ul class="side-links">
