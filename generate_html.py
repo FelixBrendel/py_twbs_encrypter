@@ -127,6 +127,7 @@ for org_file, org_key in zip(org_files, keys):
 
     # delete old file
     os.remove(generated_file)
+
 # copy other needed files
 shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "decipher.js"), os.path.join(output_dir, "decipher.js"))
 shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles.css"),   os.path.join(output_dir, "styles.css"))
