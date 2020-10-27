@@ -18,7 +18,7 @@ if len(master_key) not in [16, 24, 23]:
     sys.exit(1)
 
 master_key = master_key.encode("utf-8")
-    
+author = "Felix Brendel"
 
 if not os.path.exists("./generated_html"):
     os.makedirs("./generated_html")
@@ -49,13 +49,13 @@ for filename in sorted(os.listdir(org_dir)):
 export_command = """
   (save-window-excursion
     (find-file "{}")
-    (setq org-twbs-htmlize-output-type 'css)
+    (setq user-full-name    "{}")
     (org-twbs-export-to-html))""".replace("\n", " ")
 
 
 for org_file, org_key in zip(org_files, keys):
     full_path = os.path.join(org_dir, org_file + ".org")
-    r = subprocess.call(['emacsclient', "-e", f'{export_command.format(full_path)}'])
+    r = subprocess.call(['emacsclient', "-e", f'{export_command.format(full_path, author)}'])
     if r != 0:
         break
 
