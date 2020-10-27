@@ -13,7 +13,7 @@ if len(sys.argv) != 4:
 
 org_dir, output_dir, master_key = sys.argv[1:]
 
-if len(master_key) not in [16, 24, 23]:
+if len(master_key) not in [16, 24, 32]:
     print(f"Usage: master_key must be either 16, 24 or 32 bytes long (was {len(master_key)})")
     sys.exit(1)
 
