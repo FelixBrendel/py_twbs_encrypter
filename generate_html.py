@@ -45,8 +45,10 @@ for filename in sorted(os.listdir(org_dir)):
             else:
                 keys.append(None)
 
+# TODO(Felix): do the (require 'org) in the emacs config in the docker
 export_command = """
   (save-window-excursion
+    (require 'org)
     (setq org-publish-project-alist
       '(("project"
          :base-directory "{}"
