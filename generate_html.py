@@ -20,8 +20,8 @@ if len(master_key) not in [16, 24, 32]:
 master_key = master_key.encode("utf-8")
 author = "Felix Brendel"
 
-if not os.path.exists("./generated_html"):
-    os.makedirs("./generated_html")
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 org_files = []
 keys = []
@@ -45,20 +45,33 @@ for filename in sorted(os.listdir(org_dir)):
             else:
                 keys.append(None)
 
-
 export_command = """
   (save-window-excursion
-    (find-file "{}")
+    (setq org-publish-project-alist
+      '(("project"
+         :base-directory "{}"
+         :publishing-directory "{}"
+         :publishing-function org-twbs-publish-to-html
+         :with-sub-superscript nil)))
     (setq user-full-name    "{}")
-    (org-twbs-export-to-html))""".replace("\n", " ")
+    (org-publish-all t))
+    """.replace("\n", " ")
 
+
+abs_org_dir = os.path.abspath(org_dir)
+cmd = f'{export_command.format(abs_org_dir, abs_org_dir, author)}'
+
+# if on windows
+cmd = cmd.replace("\\", "\\\\")
+
+r = subprocess.call(['emacsclient', "-e", cmd])
+
+if r != 0:
+    print("emacs error")
+    sys.exit(1)
 
 for org_file, org_key in zip(org_files, keys):
     full_path = os.path.join(org_dir, org_file + ".org")
-    r = subprocess.call(['emacsclient', "-e", f'{export_command.format(full_path, author)}'])
-    if r != 0:
-        break
-
     generated_file = os.path.join(org_dir, org_file + ".html")
 
     with open(generated_file, "r") as html:
@@ -100,7 +113,7 @@ for org_file, org_key in zip(org_files, keys):
 
             aes = pyaes.AESModeOfOperationCTR(master_key)
             master_key_enc_real_key = aes.encrypt(real_key).hex()
-            
+
             text_list = text.split("<body>")
             assert(len(text_list) == 2)
             header = text_list[0]
