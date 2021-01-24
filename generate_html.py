@@ -93,12 +93,13 @@ for org_file, org_key in zip(org_files, keys):
                            <ul class="side-links">
         """
         # insert every page except index into the sidebar
-        for other_org_file, title in zip(org_files, titles):
+        for other_org_file, title, key in zip(org_files, titles, keys):
             # index should not appear in the list on the left
             if other_org_file == "index":
                 continue
+            maybe_lock = '' if not key else '🔐 '
             s = '' if other_org_file != org_file else 'class=\"active\"'
-            sidebar_html += f"<li><a {s} href=\"{other_org_file}.html\">{title}</a></li>"
+            sidebar_html += f"<li><a {s} href=\"{other_org_file}.html\">{maybe_lock}{title}</a></li>"
 
         sidebar_html += """ </ul>
                          </div>
@@ -137,8 +138,8 @@ for org_file, org_key in zip(org_files, keys):
 
 
         # write html to new location
-        with open(os.path.join(output_dir, org_file + ".html"), "w") as new_html:
-            new_html.write(text)
+        with open(os.path.join(output_dir, org_file + ".html"), "wb") as new_html:
+            new_html.write(text.encode("utf-8"))
 
     # delete old file
     os.remove(generated_file)
