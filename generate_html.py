@@ -124,7 +124,7 @@ for org_file, org_key in zip(org_files, keys):
             correct_key_marker = "<!--Correct Key-->"
             body = correct_key_marker + body
             aes = pyaes.AESModeOfOperationCTR(real_key)
-            real_key_enc_body = aes.encrypt(body.encode("utf-16", 'surrogatepass')).hex()
+            real_key_enc_body = aes.encrypt(body.encode("utf-8", 'surrogatepass')).hex()
             header = header.replace("</head>", f"""
 <script type="text/javascript" src="https://cdn.rawgit.com/ricmoo/aes-js/e27b99df/index.js"></script>
 <script>
@@ -139,7 +139,7 @@ for org_file, org_key in zip(org_files, keys):
 
         # write html to new location
         with open(os.path.join(output_dir, org_file + ".html"), "wb") as new_html:
-            new_html.write(text.encode('utf-16','surrogatepass'))
+            new_html.write(text.encode('utf-8','surrogatepass'))
 
     # delete old file
     os.remove(generated_file)
