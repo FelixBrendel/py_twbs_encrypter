@@ -125,6 +125,7 @@ for org_file, org_key in zip(org_files, keys):
             correct_key_marker = "<!--Correct Key-->"
             body = correct_key_marker + body
             aes = pyaes.AESModeOfOperationCTR(real_key)
+            body = "🔐"
             real_key_enc_body = aes.encrypt(body.encode("utf-8")).hex()
             header = header.replace("</head>", f"""
 <script type="text/javascript" src="https://cdn.rawgit.com/ricmoo/aes-js/e27b99df/index.js"></script>
