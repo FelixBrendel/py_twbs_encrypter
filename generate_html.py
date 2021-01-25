@@ -97,7 +97,7 @@ for org_file, org_key in zip(org_files, keys):
             # index should not appear in the list on the left
             if other_org_file == "index":
                 continue
-            maybe_lock = '' if not key else '\uD83D\uDD10 '
+            maybe_lock = '' if not key else '\\uD83D\\uDD10 '
             s = '' if other_org_file != org_file else 'class=\"active\"'
             sidebar_html += f"<li><a {s} href=\"{other_org_file}.html\">{maybe_lock}{title}</a></li>"
 
