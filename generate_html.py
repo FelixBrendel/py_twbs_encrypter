@@ -138,8 +138,8 @@ for org_file, org_key in zip(org_files, keys):
 
 
         # write html to new location
-        with open(os.path.join(output_dir, org_file + ".html"), "w") as new_html:
-            new_html.write(text)
+        with open(os.path.join(output_dir, org_file + ".html"), "wb") as new_html:
+            new_html.write(text.encode('utf-16','surrogatepass'))
 
     # delete old file
     os.remove(generated_file)
