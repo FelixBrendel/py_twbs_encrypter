@@ -62,7 +62,8 @@ function decrypt_page () {
         }
 
         // Convert our bytes back into text
-        var dec_text = aesjs.utils.utf8.fromBytes(dec_bytes)
+        // var dec_text = aesjs.utils.utf8.fromBytes(dec_bytes)
+        var dec_text = new TextDecoder().decode(dec_bytes)
         document.body.innerHTML = dec_text
 
         $('.bs-docs-sidebar li').first().addClass('active');
