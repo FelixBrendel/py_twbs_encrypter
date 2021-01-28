@@ -62,6 +62,45 @@ body {
     }
 }
 
+div.note p::before {
+    content: "Note: ";
+    font-weight: 600;
+}
+
+div.note p {
+    background-color: #f0f7fb;
+    border-left: solid 4px #3498db;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 12px;
+}
+
+
+div.tip p::before {
+    content: "Tip: ";
+    font-weight: 600;
+}
+
+div.tip p {
+    background-color: #E7F6F1;
+    border-left: solid 4px #39C675;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 12px;
+}
+
+div.warning p::before {
+    content: "Warning: ";
+    font-weight: 600;
+}
+
+div.warning p {
+    background-color: #FDF7F2;
+    border-left: solid 4px #E15244;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 12px;
+}
 
 .org-keyword {
   /* font-lock-keyword-face */
