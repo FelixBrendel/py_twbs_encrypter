@@ -70,7 +70,7 @@ div.note p::before {
 div.note p {
     background-color: #f0f7fb;
     border-left: solid 4px #3498db;
-    line-height: 18px;
+    line-height: 1.42857143;
     overflow: hidden;
     padding: 12px;
 }
@@ -84,7 +84,7 @@ div.tip p::before {
 div.tip p {
     background-color: #E7F6F1;
     border-left: solid 4px #39C675;
-    line-height: 18px;
+    line-height: 1.42857143;
     overflow: hidden;
     padding: 12px;
 }
@@ -97,7 +97,7 @@ div.warning p::before {
 div.warning p {
     background-color: #FDF7F2;
     border-left: solid 4px #E15244;
-    line-height: 18px;
+    line-height: 1.42857143;
     overflow: hidden;
     padding: 12px;
 }
